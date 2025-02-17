@@ -1,0 +1,36 @@
+//G11 alpha
+num11               =  +205.40493 +1.8881381*s +4.2113998*s^2               ;
+den11=    127752.42*s^2 +1174.3351*s^3 +2864.7957*s^4 +19.683732*s^5 +1*s^6    ; 
+
+//G21 betha
+num21=                +205.40493 +1.8881381*s +0.0422826*s^2               ;
+den21=den11;
+
+//G31 x
+num31=   2015.0224 +18.522635*s +222.09672*s^2 +1.93668*s^3 +1.0176167*s^4  
+den31=den11;
+
+//Pólos e Zeros
+pz11=syslin('c',[num11],[den11]);
+pz21=syslin('c',[num21],[den21]);
+pz31=syslin('c',[num31],[den31]);
+/*
+f1=scf(1)
+plzr(pz11)
+xtitle('Polos e Zeros em relação a alpha')
+
+f2=scf(2)
+plzr(pz21)
+xtitle('Polos e Zeros em relação a beta')
+
+f3=scf(3)
+plzr(pz31)
+xtitle('Polos e Zeros em relação a x')
+
+J = syslin('c', num, den);
+figure(1)
+clf()
+plzr(J)
+*/
+E = roots(2015.0224 +18.522635*s +222.09672*s^2 +1.93668*s^3 +1.0176167*s^4)
+disp(E)
