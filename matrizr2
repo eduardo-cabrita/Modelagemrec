@@ -1,0 +1,34 @@
+s=poly(0,'s');
+
+//Formulação da EQCaract
+IS = [s 0 0 0 ; 0 s 0 0 ; 0 0 s 0 ; 0 0 0 s]
+//disp(IS)
+A = [0    0    1    0;
+     0    0    0    1;
+    -1245.1220002295036   1208.207105886321  -1.4403519031606544   1.4403519031606544;
+     373.5595119734957   -373.9580647931263  0.4628009638005635  -0.4628009638005635];
+
+X = IS-A
+D = det(X)//polinomio caract
+f = roots(D)
+disp(f)
+
+//Formulação da FT 
+XINV = inv(X) 
+C = [1 0 0 0 ;
+     0 1 0 0] 
+    
+disp(C)
+B = [0;
+     0;
+     0.36837260574512865;
+    -0.08061639402473106];
+H = C*XINV
+G = H*B
+
+disp(G, "FT")//FT 3x1 para alpha betha e x 
+
+teste= syslin([],A, B,C, zeros(2,1))
+teste2 = ss2tf(teste)
+disp(teste2)
+[Ds,NUM,chi]=ss2tf(teste)
