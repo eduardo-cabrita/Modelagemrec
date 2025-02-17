@@ -1,0 +1,24 @@
+//G11 alpha
+num11               =        40.354607 +0.0543672*s +0.3683726*s^2 +8.216D-15*s^3                    ;
+den11=      14286.157 +17.658305*s +1619.0801*s^2 +1.9031529*s^3 +s^4        ;
+    
+//G21 betha
+num21=                  37.231845 +0.0543672*s -0.0806164*s^2 +4.885D-15*s^3                        ;
+den21=den11;
+
+//Diagrama de Bode:
+b11=syslin('c',[num11],[den11]);
+b21=syslin('c',[num21],[den21]);
+
+//Gráficos de Bode:
+f1=scf(1)
+bode(b11,0.1,10,0.001)//refino gráfico 
+xtitle('Diagrama de Bode em relação a alpha')
+f4=scf(4)
+bode(b21,0.01,100,0.001)
+xtitle('Diagrama de Bode em relação a beta')
+
+//Critério de Routh-Hurwitz:
+[r,num]=routh_t( 14739.997 +18.201977*s +1627.2761*s^2 +1.9031529*s^3 +s^4); //em routh utilizar o polinômio característico/numerador
+disp(r)
+disp('Há',num,'trocas de sinal na primeira coluna da tabela.')
