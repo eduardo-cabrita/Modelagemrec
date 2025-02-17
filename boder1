@@ -1,0 +1,32 @@
+//G11 alpha
+s=poly(0,'s');
+num11               =  +205.40493 +1.8881381*s +4.2113998*s^2               ;
+den11=    127752.42*s^2 +1174.3351*s^3 +2864.7957*s^4 +19.683732*s^5 +1*s^6    ; 
+
+//G21 betha
+num21=                +205.40493 +1.8881381*s +0.0422826*s^2               ;
+den21=den11;
+
+//G31 x
+num31=   2015.0224 +18.522635*s +222.09672*s^2 +1.93668*s^3 +1.0176167*s^4  
+den31=den11;
+
+b11=syslin('c',[num11],[den11]);
+b21=syslin('c',[num21],[den21]);
+b31=syslin('c',[num31],[den31]);
+/*
+//Gráficos de Bode:
+f1=scf(1)
+bode(b11,0.01,100,0.01)//refino gráfico 
+xtitle('Diagrama de Bode em relação a alpha')
+f4=scf(4)
+bode(b21,0.01,100,0.01)
+xtitle('Diagrama de Bode em relação a beta')
+f7=scf(7)
+bode(b31,0.01,10,0.01)
+xtitle('Diagrama de Bode em relação a x')
+*/
+//Critério de Routh-Hurwitz:
+[r,num]=routh_t(127752.42*s^2 +1174.3351*s^3 +2864.7957*s^4 +19.683732*s^5 +1*s^6); //em routh utilizar o polinômio característico/numerador
+disp(r)
+disp('Há',num,'trocas de sinal na primeira coluna da tabela.')
